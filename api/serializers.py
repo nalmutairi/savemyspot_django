@@ -115,8 +115,8 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("Incorrect username/password")
 
         try:
-        	restaurant_user = RestaurantUser.objects.get(user = user_obj)
-        	data['restaurant']= restaurant_user.id
+        	restaurant_user = RestaurantUser.objects.filter(user = user_obj)
+        	data['restaurant']= restaurant_user[0].id
 
         except:
         	pass
